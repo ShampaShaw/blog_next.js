@@ -1,10 +1,11 @@
 import Links from "./links/Links";
+import Style from "./navbar.module.css";
 
 const Navbar = () => {
     return (
 
-        <div style={{ backgroundColor: 'rgb(7, 7, 67)' }} className='h-100 flex items-center justify-between '>
-           <div className="text-30 font-bold">Logo</div>
+        <div className={Style.container}>
+           <div>Logo</div>
            <div>
             <Links />
            </div>
