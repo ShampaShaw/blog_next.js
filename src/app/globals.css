@@ -37,3 +37,41 @@ a{
     font-display: column;
     justify-content: space-between;
 }
+
+@media (max-width: 1536ppx){
+    .container{
+        width: 1366px;
+    }
+}
+
+@media (max-width: 1336ppx){
+    .container{
+        width: 1280px;
+    }
+}
+
+@media (max-width: 1280ppx){
+    .container{
+        width: 1024px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 1024ppx){
+    .container{
+        width: 768px;
+    }
+}
+
+@media (max-width: 768ppx){
+    .container{
+        width: 640px;
+    }
+}
+
+@media (max-width: 640ppx){
+    .container{
+        width: 475px;
+    }
+}
