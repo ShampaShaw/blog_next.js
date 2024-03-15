@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './home.module.css'
 
 const Home = () => {
-  console.log("Hello")
+  
   return <div className={styles.container}>
     <div className={styles.textContainer}>
     <h1 className='text-5xl font-bold'>Imagination Unleashed: Where Creativity Finds Its Voice</h1>
