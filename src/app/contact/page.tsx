@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
 import Image from 'next/image';
 import style from './contact.module.css'
 
 const ContactPage = () => {
+  console.log("contact page");
   console.log("Hello")
   return (
     <div className={style.container}>
@@ -16,7 +17,7 @@ const ContactPage = () => {
           <input type='text' placeholder='Email Address'/>
           <input type='text' placeholder='Phone Number (Optional)'/>
           <textarea name='' id='' cols={30} rows={10} placeholder='Write Your Message'></textarea>
-          <button className={style.button}>Send</button>
+          <button className={style.button} onClick={() => console.log("clicked")}>Send</button>
         </form>
       </div>
     </div>
