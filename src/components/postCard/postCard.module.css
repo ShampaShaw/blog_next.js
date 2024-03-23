@@ -15,25 +15,6 @@
     height: 400px;
   }
   
-  .icons {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: baseline;
-    color: var(--text);
-    gap: 290px;
-    cursor: pointer;
-  }
-
-  
-  .imgContainer .FaEdit,
-.imgContainer .FaTrash {
-  background-color: black;
-  padding: 8px; /* Adjust as needed */
-  border-radius: 50%;
-}
-
 /* Hover effects */
 .imgContainer .FaEdit:hover,
 .imgContainer .FaTrash:hover {

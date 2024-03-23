@@ -1,4 +1,4 @@
-import style from './blog.module.css'
+import style from './blog.module.css';
 import PostCard from '@/components/postCard/postCard';
 
 const BlogPage = () => {
@@ -21,6 +21,6 @@ const BlogPage = () => {
             </div>
         </div>
     );
-    }
+}
 
-    export default BlogPage;
+export default BlogPage;
