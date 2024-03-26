@@ -2,7 +2,7 @@ import style from './blog.module.css';
 import PostCard from '@/components/postCard/postCard';
 
 const getData = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {next:{revalidate:3600}});  //no-cache is used to bypass the cache and force a server request for the data every time the page is loaded 
 
     if(!res.ok) {
         ('Something went wrong');
