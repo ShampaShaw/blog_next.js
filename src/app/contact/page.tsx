@@ -1,7 +1,8 @@
-"use client";
-
 import Image from 'next/image';
 import style from './contact.module.css'
+// import dynamic from 'next/dynamic';
+
+// const HydrationTestNoSSR = dynamic(() => import('@/components/hydrationTest'), {ssr: false});
 
 const ContactPage = () => {
   console.log("contact page");
@@ -12,12 +13,13 @@ const ContactPage = () => {
         <Image src='/contact.png' alt='' fill className={style.img}/>
       </div>
       <div className={style.formContainer}>
+        {/* <HydrationTestNoSSR /> */}
         <form action="" className={style.form}>
           <input type='text' placeholder='Full Name'/>
           <input type='text' placeholder='Email Address'/>
           <input type='text' placeholder='Phone Number (Optional)'/>
           <textarea name='' id='' cols={30} rows={10} placeholder='Write Your Message'></textarea>
-          <button className={style.button} onClick={() => console.log("clicked")}>Send</button>
+          <button className={style.button}>Send</button>
         </form>
       </div>
     </div>
