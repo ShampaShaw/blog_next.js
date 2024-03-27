@@ -2,6 +2,7 @@ import Image from 'next/image';
 import style from './singlePost.module.css'
 import PostUser from '@/components/postUser/PostUser';
 import { Suspense } from 'react';
+import { getPost } from '@/lib/data';
 
 //FETCH DATA FROM API
 // const getData = async (slug: string) => {
@@ -15,14 +16,16 @@ import { Suspense } from 'react';
 
 
 const SinglePost = async ({params}: any) => {
-    //const post = await getData(slug);
+    const { slug } = params;
+    const post = await getPost(slug);
+
     return (
         <div className={style.container}>
             <div className={style.imgContainer}>
                 <Image src="https://images.pexels.com/photos/6200867/pexels-photo-6200867.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt='' fill className={style.img}/>
             </div>
             <div className={style.textContainer}>
-                <h1 className={style.title}>{post.title}</h1>
+                {post && <h1 className={style.title}>{post.title}</h1>}
                 <div className={style.detail}>
                     <Image 
                         src="https://images.pexels.com/photos/6200867/pexels-photo-6200867.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" 
@@ -31,7 +34,7 @@ const SinglePost = async ({params}: any) => {
                         height={50}  
                         className={style.avatar}/>
                     <Suspense fallback={<div>Loading...</div>}>
-                        <PostUser userId = {post.userId} />
+                        {post && <PostUser userId={post.userId} />}
                     </Suspense>
                     <div className={style.detailText}>
                         <span className={style.detailTitle}>Published</span>
@@ -39,7 +42,7 @@ const SinglePost = async ({params}: any) => {
                     </div>
                 </div>
                 <div className={style.content}>
-                    {post.body}
+                    {post && post.body}
                 </div>
             </div>
         </div>
@@ -47,3 +50,7 @@ const SinglePost = async ({params}: any) => {
 }
 
 export default SinglePost;
+
+function getData(slug: any) {
+    throw new Error('Function not implemented.');
+}
