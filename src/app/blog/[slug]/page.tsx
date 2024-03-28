@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import style from './singlePost.module.css'
+import styles from './singlePost.module.css'
 import PostUser from '@/components/postUser/PostUser';
 import { Suspense } from 'react';
 import { getPost } from '@/lib/data';
@@ -17,40 +17,39 @@ import { getPost } from '@/lib/data';
 
 const SinglePost = async ({params}: any) => {
     const { slug } = params;
-    const post = await getPost(slug);
 
-    return (
-        <div className={style.container}>
-            <div className={style.imgContainer}>
-                <Image src="https://images.pexels.com/photos/6200867/pexels-photo-6200867.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt='' fill className={style.img}/>
-            </div>
-            <div className={style.textContainer}>
-                {post && <h1 className={style.title}>{post.title}</h1>}
-                <div className={style.detail}>
-                    <Image 
-                        src="https://images.pexels.com/photos/6200867/pexels-photo-6200867.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" 
-                        alt=''
-                        width={50}
-                        height={50}  
-                        className={style.avatar}/>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        {post && <PostUser userId={post.userId} />}
-                    </Suspense>
-                    <div className={style.detailText}>
-                        <span className={style.detailTitle}>Published</span>
-                        <span className={style.detailValue}>15.03.24</span>
-                    </div>
-                </div>
-                <div className={style.content}>
-                    {post && post.body}
-                </div>
+  // FETCH DATA WITH AN API
+  //const post = await getPost(slug);
+  
+
+  // FETCH DATA WITHOUT AN API
+  const post = await getPost(slug);
+  console.log("singlePost:",post)
+
+  return (
+    <div className={styles.container}>
+      {post?.img && (
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img} />
+        </div>
+      )}
+      <div className={styles.textContainer}>
+        <h1 className={styles.title}>{post?.title}</h1>
+        <div className={styles.detail}>
+          {/* {post && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <PostUser userId={post.userId} />
+            </Suspense>
+          )} */}
+          <div className={styles.detailText}>
+                <span className={styles.detailTitle}>Published</span>
+                <span className={styles.detailValue}>15.03.24</span>
             </div>
         </div>
-    );
-}
+        <div className={styles.content}>{post?.desc}</div>
+      </div>
+    </div>
+  );
+};
 
 export default SinglePost;
-
-function getData(slug: any) {
-    throw new Error('Function not implemented.');
-}
