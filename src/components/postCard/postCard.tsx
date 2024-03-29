@@ -3,7 +3,6 @@ import style from './postCard.module.css';
 import Link from 'next/link';
 
 const PostCard = ({post}: {post: any}) => {
-  console.log("Postcard: ", post)
   return (
     <div className={style.container}>
       <div className={style.top}>

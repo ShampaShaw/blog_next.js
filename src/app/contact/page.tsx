@@ -5,8 +5,6 @@ import style from './contact.module.css'
 // const HydrationTestNoSSR = dynamic(() => import('@/components/hydrationTest'), {ssr: false});
 
 const ContactPage = () => {
-  console.log("contact page");
-  console.log("Hello")
   return (
     <div className={style.container}>
       <div className={style.imgContainer}>
