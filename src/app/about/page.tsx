@@ -1,6 +1,11 @@
 import Image from "next/image";
 import style from "./about.module.css";
 
+export const metadata = {
+    title: "About Page",
+    description: "Learn more about our blog.",
+}
+
 const AboutPage = () => {
     return (
         <div className={style.container}>

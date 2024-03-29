@@ -14,6 +14,16 @@ import { getPost } from '@/lib/data';
 //     return res.json();
 // }
 
+export const generateMetadat = async ({params}: any) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+}
+
 
 const SinglePost = async ({params}: any) => {
     const { slug } = params;
