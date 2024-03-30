@@ -6,8 +6,8 @@ import style from './contact.module.css'
 
 export const metadata = {
   title: "Contact Page",
-  description: "Contact us for more information about our blog.",
-}
+  description: "Contact description",
+};
 
 const ContactPage = () => {
   return (

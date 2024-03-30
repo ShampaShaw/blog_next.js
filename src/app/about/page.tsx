@@ -3,8 +3,9 @@ import style from "./about.module.css";
 
 export const metadata = {
     title: "About Page",
-    description: "Learn more about our blog.",
-}
+    description: "About description",
+  };
+  
 
 const AboutPage = () => {
     return (

@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ['latin'] })
 //SEO is a way to improve the quality and quantity of website traffic to a website or a web page from search engines.
 export const metadata = {
   title: {
-    default: "Next-js 14 Home Page",
-    template: "%s | Next-js 14"
+    default:"Next.js 14 Homepage",
+    template:"%s | Next.js 14"
   },
-  description: "App description",
-}
+  description: "Next.js starter app description",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
