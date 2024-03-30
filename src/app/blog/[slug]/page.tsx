@@ -5,19 +5,19 @@ import { Suspense } from 'react';
 import { getPost } from '@/lib/data';
 
 //FETCH DATA FROM API
-// const getData = async (slug: string) => {
-//     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);  //no-cache is used to bypass the cache and force a server request for the data every time the page is loaded 
+const getData = async (slug: string) => {
+    const res = await fetch(`http://localhost:3000/api/blog/${slug}`,);  //no-cache is used to bypass the cache and force a server request for the data every time the page is loaded 
 
-//     if(!res.ok) {
-//         ('Something went wrong');
-//     }
-//     return res.json();
-// }
+    if(!res.ok) {
+        ('Something went wrong');
+    }
+    return res.json();
+}
 
 export const generateMetadata = async ({ params }: any) => {
   const { slug } = params;
 
-  const post = await getPost(slug);
+  const post = await getData(slug);
 
   return {
     title: post.title,

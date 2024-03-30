@@ -3,24 +3,23 @@ import styles from "./blog.module.css";
 import { getPosts } from "@/lib/data";
 
 // FETCH DATA WITH AN API
-// const getData = async () => {
-//   const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}});
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}});
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
 
-//   return res.json();
-// };
-
+  return res.json();
+};
 const BlogPage = async () => {
 
   // FETCH DATA WITH AN API
-  //const posts = await getData();
+  const posts = await getData();
 
   // FETCH DATA WITHOUT AN API
-  const posts = await getPosts();
-  console.log("posts:",posts)
+  // const posts = await getPosts();
+  // console.log("posts:",posts)
 
   return (
     <div className={styles.container}>
