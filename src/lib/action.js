@@ -5,6 +5,7 @@ import { Post, User } from "./models";
 import { revalidatePath } from "next/cache";
 import { signIn, signOut } from '@/lib/auth';
 import bcrypt from "bcryptjs";
+import { isRedirectError } from "next/dist/client/components/redirect";
 
 export const addPost = async (formData) => {
     const { title, desc, slug, userId } = Object.fromEntries(formData);
@@ -53,12 +54,12 @@ export const handleLogout = async () => {
     await signOut();
 }
 
-export const register = async (formData) => {
-    const { username, email, password,img, confirmPassword} = Object.fromEntries(formData);
+export const register = async (previousState,formData) => {
+    const { username, email, password, img, confirmPassword} = Object.fromEntries(formData);
     
-    if(password !== confirmPassword) return { 
-        error: "Passwords do not match!" 
-    };
+    if (password !== confirmPassword) {
+        return { error: "Passwords do not match!"}
+    }
 
     try {
         connectToDB();
@@ -81,6 +82,7 @@ export const register = async (formData) => {
 
         await newUser.save();
         console.log("User registered successfully");
+        return { success: true }
     } catch (err) {
         console.log(err);
         return { error: "Something went wrong!" };
@@ -89,11 +91,13 @@ export const register = async (formData) => {
 
 export const login = async (formData) => {
     const { username, password } = Object.fromEntries(formData);
-
+  
     try {
-        await signIn("credentials", {username, password});
+      await signIn("credentials", { username, password });
     } catch (err) {
-        console.log(err);
-        return { error: "Something went wrong!" };
-    }
-}
+        if (isRedirectError(err)) {
+          console.error(err);
+          throw err;
+        }
+      }
+  };
