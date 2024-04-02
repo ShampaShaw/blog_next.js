@@ -6,6 +6,7 @@ import Facebook from "next-auth/providers/facebook"
 import bcrypt from "bcryptjs"
 import { connectToDB } from "./utils"
 import { User } from "./models"
+import { authConfig } from "./auth.config"
 
 const login = async (credentials) => {
   try{
@@ -37,6 +38,7 @@ export const {
     signIn, 
     signOut 
     } = NextAuth({ 
+      ...authConfig,
     providers: [ 
         GitHub({
             clientId: process.env.GITHUB_CLIENT_ID, 
@@ -88,5 +90,6 @@ export const {
           }
           return true;
         },
+        ...authConfig.callbacks,
       },
     });
