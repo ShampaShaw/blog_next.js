@@ -1,7 +1,9 @@
+import styles from './admin.module.css';
+
 const admin = () => {
     return (
-        <div>
-            <h1>Admin</h1>
+        <div className={styles.container}>
+            <div className={styles.row}></div>
         </div>
     );
 }
